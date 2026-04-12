@@ -22,7 +22,7 @@ The core innovation of Hypencoder is the **Q-Net**—a hyper-network that dynami
 
 ## 📊 Benchmark Results
 
-Our retrained model (**Hypencoder (Mine)**) achieves results statistically comparable to the original paper, even exceeding it in top-rank precision (MRR).
+Our retrained model achieves results statistically comparable to the original paper, even exceeding it in top-rank precision (MRR).
 
 | Dataset | Metric | Hypencoder (Paper) | **Hypencoder (Mine)** |
 | :--- | :--- | :--- | :--- |
@@ -104,3 +104,7 @@ python scripts/run_eval_only.py --config configs/eval_retrained.yaml
 - `imgs/`: Architecture diagrams and training visualizations.
 
 ---
+
+## Link to my paper
+
+https://drive.google.com/file/d/1sBa5Jxoj1qcTB2kaI3MMl2v9GYkXqBzA/view?usp=sharing
