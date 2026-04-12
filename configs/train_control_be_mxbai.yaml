@@ -1,0 +1,50 @@
+model_config:
+  tokenizer_pretrained_model_name_or_path: google-bert/bert-base-uncased
+  model_type: biencoder
+  query_encoder_kwargs:
+    model_name_or_path: google-bert/bert-base-uncased
+    freeze_transformer: false
+    model_type: biencoder
+    base_encoder_output_dim: 768
+  passage_encoder_kwargs:
+    model_name_or_path: google-bert/bert-base-uncased
+    freeze_transformer: false
+    pooling_type: cls
+  shared_encoder: true
+  loss_type:
+    - margin_mse
+  loss_kwargs:
+    - {}
+
+data_config:
+  training_data_jsonl: data/triples.train.mxbai.jsonl
+  validation_data_jsonl: null
+  positive_filter_type: first
+  label_key: score
+  num_positives_to_sample: 1
+  num_negatives_to_sample: 7
+
+trainer_config:
+  hf_trainer_config:
+    output_dir: ./checkpoints/control_be_teacher_mxbai
+    overwrite_output_dir: true
+    eval_strategy: "no"
+    eval_steps: 5000
+    per_device_train_batch_size: 64
+    gradient_accumulation_steps: 1
+    learning_rate: 2.0e-05
+    num_train_epochs: 10
+    max_steps: 250000
+    run_name: "control_be_teacher_mxbai"
+    save_strategy: steps
+    save_steps: 5000
+    save_only_model: true
+    logging_steps: 10
+    bf16: true
+    tf32: true
+    fp16: false
+    torch_compile: false
+    report_to: "none"
+    dataloader_num_workers: 4
+    save_safetensors: false
+  resume_from_checkpoint: false
