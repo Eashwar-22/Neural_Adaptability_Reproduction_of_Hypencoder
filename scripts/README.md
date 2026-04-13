@@ -1,29 +1,47 @@
 # Scripts Directory
 
-This directory contains all the shell and python scripts used for training, inference, and verification of the Hypencoder and Hypen-ColBERT models.
+This directory contains all scripts used in the thesis, organized by **Research Question (RQ)** for easy navigation.
 
-## Directory Structure
+## Directory Structure (Thesis-Aligned)
 
-*   **`training/`**: SLURM and bash scripts to launch training jobs (e.g., `train_8gpu_hypen_colbert_multihead.sh`).
-*   **`inference/`**: Scripts to run inference and benchmarks (e.g., `run_msmarco_...`, `run_trec_...`).
-*   **`verification/`**: Python scripts to verify claims and architectures (e.g., `verify_multi_head_logic.py`, `verify_claim_3_7.py`).
+| Directory | Thesis Section | Description |
+|---|---|---|
+| `rq1_reproduction/` | **RQ1** — Baseline Verification | Training and evaluation scripts for reproducing the original Hypencoder results. |
+| `rq2_interpretability/` | **RQ2** — Q-Net Mechanistic Analysis | Q-Net fingerprinting, depth analysis, saliency maps, and UMAP visualizations. |
+| `rq3_scaling/` | **RQ3** — SOTA Teacher Distillation | Training with MXBAI teacher and statistical significance testing. |
+| `data_prep/` | Chapter 3 — Methodology | Hard negative mining and distillation data preparation. |
+| `verification/` | Chapter 4 — Verification | Scripts to verify training improvements (dropout, regularization). |
+
+### Other Directories
+
+*   **`analysis/`**: Additional analysis scripts (cluster properties, dataset stats, thesis plots, etc.).
+*   **`benchmarking/`**: Benchmarking and profiling scripts.
+*   **`inference/`**: Inference and retrieval scripts.
+*   **`train/`**: Additional training scripts (control bi-encoders, distillation variants).
+*   **`training/`**: Legacy SLURM training scripts (ColBERT variants).
 *   **`setup/`**: Environment setup and data conversion scripts.
-*   **`utils/`**: Helper utilities and library code specific to scripts.
-*   **`legacy/`**: Deprecated or old scripts.
+*   **`utils/`**: Helper utilities (evaluation, conversion, debugging).
+*   **`data/`**: Additional data preparation scripts.
+*   **`legacy/`**: Deprecated scripts.
 
-## Common Tasks
+## Quick Start
 
-**Train Multi-Head HypenColBERT:**
+**RQ1 — Reproduce Hypencoder Training:**
 ```bash
-sbatch scripts/training/hypencolbert_multihead.sh
+sbatch scripts/rq1_reproduction/train_hypencoder_retrained.sh
 ```
 
-**Verify Logic:**
+**RQ2 — Run Q-Net Fingerprint Analysis:**
 ```bash
-python scripts/verification/verify_multi_head_logic.py
+python scripts/rq2_interpretability/QNet_fingerprint.py
 ```
 
-## Directory Structure
-*   **`training/`**: `hypencolbert_multihead.sh`, `hypencoder_retrained.sh`, etc.
-*   **`inference/`**: `inference_hypencoder_retrained.sh`, `inference_hypencoder_pretrained.sh`, `inference_hypencolbert.sh`, etc.
-*   **`verification/`**: `verify_claim_3_7.py`, `verify_multi_head_logic.py`, etc.
+**RQ3 — Train with MXBAI Teacher:**
+```bash
+sbatch scripts/rq3_scaling/train_hypencoder_mxbai.sh
+```
+
+**Verify Training Improvements:**
+```bash
+python scripts/verification/verify_training_improvements.py
+```

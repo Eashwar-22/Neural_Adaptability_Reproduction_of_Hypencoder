@@ -11,7 +11,7 @@
 source ~/.bashrc
 conda activate hype_env
 
-CONFIG_FILE="configs/train_hypencoder_mxbai.yaml"
+CONFIG_FILE="configs/scaling/train_hypencoder_mxbai.yaml"
 
 # Ensure data exists before starting
 if [ ! -f "data/triples.train.mxbai.jsonl" ]; then

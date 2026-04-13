@@ -98,10 +98,23 @@ python scripts/run_eval_only.py --config configs/eval_retrained.yaml
 ---
 
 ## 📂 Project Structure
-- `hypencoder_cb/`: Core modeling logic and Q-Net implementation.
-- `scripts/`: Training, evaluation, and verification scripts.
-- `configs/`: YAML configurations for experimental runs.
-- `imgs/`: Architecture diagrams and training visualizations.
+
+```
+├── hypencoder_cb/          # Core modeling logic and Q-Net implementation
+├── scripts/
+│   ├── rq1_reproduction/   # RQ1: Baseline verification (training, eval)
+│   ├── rq2_interpretability/ # RQ2: Q-Net mechanistic analysis
+│   ├── rq3_scaling/        # RQ3: SOTA teacher distillation & significance tests
+│   ├── data_prep/          # Data mining and preprocessing
+│   ├── verification/       # Training improvement verification
+│   ├── analysis/           # Additional analysis scripts
+│   ├── train/              # Additional training scripts
+│   └── ...
+├── configs/
+│   ├── reproduction/       # RQ1 configs
+│   └── scaling/            # RQ3 configs
+└── imgs/                   # Architecture diagrams and visualizations
+```
 
 ---
 
